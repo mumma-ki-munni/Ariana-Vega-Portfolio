@@ -1,1 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ariana Vega | Architecture & Interior Architecture Studio</title>
+  
+  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            alabaster: '#F7F5F0',
+            travertine: '#ECE7DD',
+            sandstone: '#DDD6C7',
+            bronze: '#B59473',
+            deepbronze: '#8C6C4C',
+            charcoal: '#171615',
+            obsidian: '#0E0E0D',
+          },
+          borderRadius: {
+            'arch': '160px 160px 24px 24px',
+          }
+        }
+      }
+    }
+  </script>
 
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0E0E0D;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2E2D2A;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B59473;
+    }
+
+    /* Arched portrait styling matching editorial aesthetic */
+    .arched-frame {
+      border-radius: 200px 200px 32px 32px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Glassmorphism effects */
+    .glass-dark {
+      background: rgba(23, 22, 21, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .glass-card:hover {
+      border-color: rgba(181, 148, 115, 0.4);
+    }
+
+    /* Subtle image hover zoom */
+    .image-zoom-container img {
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .image-zoom-container:hover img {
+      transform: scale(1.06);
+    }
+  </style>
+</head>
+
+<body class="bg-obsidian text-alabaster font-sans antialiased selection:bg-bronze selection:text-obsidian overflow-x-hidden">
+
+  <!-- Header Navigation -->
+  <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5 px-6 md:px-12 glass-dark border-b border-white/5">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#hero" class="flex flex-col group">
+        <span class="font-display font-extrabold text-xl md:text-2xl tracking-[0.2em] text-alabaster group-hover:text-bronze transition-colors">
+          ARIANA VEGA
+        </span>
+        <span class="text-[9px] uppercase tracking-[0.35em] text-sandstone/60">
+          Architecture &amp; Interior Art
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-9 text-xs uppercase font-medium tracking-[0.2em] text-sandstone/80">
+        <a href="#about" class="hover:text-bronze transition-colors py-1">About</a>
+        <a href="#portfolio" class="hover:text-bronze transition-colors py-1">Portfolio</a>
+        <a href="#philosophy" class="hover:text-bronze transition-colors py-1">Philosophy</a>
+        <a href="#services" class="hover:text-bronze transition-colors py-1">Services</a>
+        <a href="#accolades" class="hover:text-bronze transition-colors py-1">Accolades</a>
+      </nav>
+
+      <!-- CTA & Mobile Toggle -->
+      <div class="flex items-center space-x-4">
+        <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.18em] rounded-full border border-bronze/60 text-alabaster hover:bg-bronze hover:text-obsidian transition-all duration-300">
+          Inquire Studio
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobileMenuBtn" aria-label="Toggle Navigation Menu" class="md:hidden p-2.5 rounded-lg border border-white/10 text-alabaster hover:text-bronze focus:outline-none">
+          <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobileDrawer" class="hidden md:hidden pt-6 pb-6 border-t border-white/10 mt-4 space-y-4 text-center text-sm uppercase tracking-[0.2em]">
+      <a href="#about" class="block py-2 text-sandstone hover:text-bronze mobile-nav-link">About</a>
+      <a href="#portfolio" class="block py-2 text-sandstone hover:text-bronze mobile-nav-link">Portfolio</a>
+      <a href="#philosophy" class="block py-2 text-sandstone hover:text-bronze mobile-nav-link">Philosophy</a>
+      <a href="#services" class="block py-2 text-sandstone hover:text-bronze mobile-nav-link">Services</a>
+      <a href="#accolades" class="block py-2 text-sandstone hover:text-bronze mobile-nav-link">Accolades</a>
+      <a href="#contact" class="inline-block mt-3 px-6 py-2.5 text-xs font-semibold rounded-full bg-bronze text-obsidian mobile-nav-link">
+        Book Private Consultation
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-6 md:px-12 overflow-hidden">
+      <!-- Background Ambient Glow -->
+      <div class="absolute top-1/4 -left-32 w-96 h-96 bg-bronze/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute bottom-10 -right-32 w-[500px] h-[500px] bg-amber-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+        <!-- Hero Text Column -->
+        <div class="lg:col-span-7 space-y-6 md:space-y-8">
+          <div class="inline-flex items-center space-x-3 px-4 py-1.5 rounded-full border border-bronze/30 bg-charcoal/60 text-xs text-sandstone tracking-widest uppercase">
+            <span class="w-2 h-2 rounded-full bg-bronze animate-pulse"></span>
+            <span>Milan &bull; New York &bull; Zurich</span>
+          </div>
+          
+          <h1 class="text-4xl sm:text-6xl md:text-7xl font-display font-extrabold tracking-tight leading-[1.08] text-alabaster">
+            Sculpting Spatial Silence &amp;
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-bronze via-sandstone to-alabaster">
+              Timeless Light.
+            </span>
+          </h1>
+
+          <p class="text-sandstone/80 text-base md:text-lg max-w-xl font-light leading-relaxed">
+            Led by Ariana Vega, our studio engineers high-end private sanctuaries, monolithic residential architecture, and contemplative spatial installations crafted in harmony with raw earth and natural illumination.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a href="#portfolio" class="px-8 py-3.5 rounded-full bg-bronze text-obsidian font-semibold text-xs tracking-widest uppercase hover:bg-white transition-colors duration-300 shadow-lg shadow-bronze/20">
+              Explore Works
+            </a>
+            <a href="#about" class="px-8 py-3.5 rounded-full border border-white/20 text-alabaster font-medium text-xs tracking-widest uppercase hover:bg-white/10 transition-colors duration-300">
+              Architectural Profile
+            </a>
+          </div>
+
+          <!-- Featured Recognition Strip -->
+          <div class="pt-8 border-t border-white/10 flex flex-wrap items-center gap-8 text-xs text-sandstone/60 uppercase tracking-widest">
+            <span>Featured in</span>
+            <span class="font-display font-bold text-alabaster tracking-wider">Architectural Digest</span>
+            <span class="font-display font-bold text-alabaster tracking-wider">ELLE Decor</span>
+            <span class="font-display font-bold text-alabaster tracking-wider">Frame Awards 2025</span>
+          </div>
+        </div>
+
+        <!-- Hero Visual / Showcase Frame -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-md">
+            <!-- Arched Featured Visual -->
+            <div class="arched-frame aspect-[4/5] w-full border border-white/15 bg-charcoal shadow-2xl relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" 
+                alt="Villa Monolith Interior Architecture" 
+                class="w-full h-full object-cover grayscale contrast-125 hover:scale-105 transition-transform duration-1000"
+                onerror="this.src='https://placehold.co/800x1000/171615/B59473?text=Villa+Monolith'"
+              >
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-transparent to-transparent"></div>
+              
+              <!-- Floating Card Overlay -->
+              <div class="absolute bottom-6 left-6 right-6 p-4 rounded-2xl glass-dark border border-white/10">
+                <p class="text-[10px] uppercase tracking-widest text-bronze font-semibold">Featured Commission</p>
+                <h3 class="text-sm font-display font-bold text-alabaster mt-0.5">The Crystalline Pavilion &bull; Lake Como</h3>
+                <p class="text-xs text-sandstone/70 mt-1">Monolithic travertine, thermal glazed walls, custom bronze joinery.</p>
+              </div>
+            </div>
+
+            <!-- Geometric Floating Accents -->
+            <div class="absolute -bottom-6 -left-6 bg-charcoal p-4 rounded-2xl border border-bronze/30 shadow-xl hidden sm:block">
+              <p class="text-2xl font-display font-bold text-bronze">14+</p>
+              <p class="text-[10px] tracking-wider uppercase text-sandstone/80">International Awards</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="py-24 md:py-32 px-6 md:px-12 bg-charcoal/40 border-y border-white/5 relative">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left Column: Portrait Photo with Arched Top Shape -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="relative w-full max-w-sm">
+              <div class="arched-frame aspect-[3.8/5] w-full border-2 border-bronze/40 bg-obsidian shadow-2xl relative">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1000&q=80"
+                  alt="Ariana Vega - Lead Architect & Spatial Designer"
+                  class="w-full h-full object-cover object-top filter contrast-110 brightness-95 hover:scale-105 transition-transform duration-700"
+                  onerror="this.src='https://placehold.co/700x950/171615/B59473?text=Ariana+Vega'"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent"></div>
+              </div>
+
+              <!-- Floating Designer Badge -->
+              <div class="absolute -bottom-5 right-2 sm:-right-4 px-5 py-3 rounded-xl glass-dark border border-white/10 shadow-2xl">
+                <p class="text-xs font-display font-semibold text-alabaster">Ariana Vega, AIA &bull; RIBA</p>
+                <p class="text-[10px] text-bronze uppercase tracking-widest font-medium">Principal Spatial Architect</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Biography & Studio Philosophy -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-block text-xs uppercase tracking-[0.25em] text-bronze font-semibold">
+              The Architect &bull; Vision &amp; Practice
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-alabaster leading-tight">
+              Designing spaces that provoke stillness, tactile intimacy, and longevity.
+            </h2>
+
+            <p class="text-sandstone/80 text-base font-light leading-relaxed">
+              With over 12 years directing bespoke residential and cultural architecture across Southern Europe and North America, Ariana Vega approaches every site as a living conversation between geographical light, monolithic form, and handcrafted materials.
+            </p>
+
+            <p class="text-sandstone/70 text-sm font-light leading-relaxed">
+              Prior to founding her namesake studio in Milan, Ariana completed masterworks under Swiss and Nordic ateliers, cultivating a deep reverence for raw stone, charred timber, patinated bronze, and passive bio-climatic comfort. Every project is conceived as an enduring sanctuary for modern human consciousness.
+            </p>
+
+            <!-- Three Core Pillars -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4">
+              <div class="p-4 rounded-xl border border-white/5 bg-obsidian/50 hover:border-bronze/30 transition-colors">
+                <span class="text-xs font-display font-bold text-bronze block mb-1">01 &bull; MATERIAL INTEGRITY</span>
+                <p class="text-xs text-sandstone/70 leading-normal">Locally quarried travertine, lime plaster, untreated European woods.</p>
+              </div>
+              <div class="p-4 rounded-xl border border-white/5 bg-obsidian/50 hover:border-bronze/30 transition-colors">
+                <span class="text-xs font-display font-bold text-bronze block mb-1">02 &bull; SCULPTURAL VOIDS</span>
+                <p class="text-xs text-sandstone/70 leading-normal">Balancing monumental volume with deeply quiet acoustic intimacy.</p>
+              </div>
+              <div class="p-4 rounded-xl border border-white/5 bg-obsidian/50 hover:border-bronze/30 transition-colors">
+                <span class="text-xs font-display font-bold text-bronze block mb-1">03 &bull; SUSTAINABLE CLIMATE</span>
+                <p class="text-xs text-sandstone/70 leading-normal">Thermal massing, solar alignment, and zero-carbon vernacular masonry.</p>
+              </div>
+            </div>
+
+            <!-- Signature Line -->
+            <div class="pt-4 flex items-center space-x-4">
+              <div class="w-12 h-px bg-bronze/50"></div>
+              <span class="font-display italic text-sandstone text-sm tracking-wide">"Architecture is built silence waiting for the light to speak."</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-20 pt-12 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div class="stat-card p-6 rounded-2xl glass-card">
+            <div class="text-4xl md:text-5xl font-display font-extrabold text-alabaster" data-target="48">0</div>
+            <p class="text-xs uppercase tracking-widest text-bronze mt-2 font-medium">Sanctuaries Built</p>
+            <p class="text-[11px] text-sandstone/50 mt-1">Across 8 Countries</p>
+          </div>
+
+          <div class="stat-card p-6 rounded-2xl glass-card">
+            <div class="text-4xl md:text-5xl font-display font-extrabold text-alabaster" data-target="14">0</div>
+            <p class="text-xs uppercase tracking-widest text-bronze mt-2 font-medium">Design Awards</p>
+            <p class="text-[11px] text-sandstone/50 mt-1">RIBA, Frame &amp; WAF</p>
+          </div>
+
+          <div class="stat-card p-6 rounded-2xl glass-card">
+            <div class="text-4xl md:text-5xl font-display font-extrabold text-alabaster" data-target="100">0</div>
+            <p class="text-xs uppercase tracking-widest text-bronze mt-2 font-medium">% Bespoke Objects</p>
+            <p class="text-[11px] text-sandstone/50 mt-1">Custom Joinery &amp; Fixtures</p>
+          </div>
+
+          <div class="stat-card p-6 rounded-2xl glass-card">
+            <div class="text-4xl md:text-5xl font-display font-extrabold text-alabaster" data-target="12">0</div>
+            <p class="text-xs uppercase tracking-widest text-bronze mt-2 font-medium">Years Of Studio</p>
+            <p class="text-[11px] text-sandstone/50 mt-1">Founded in Milan 2014</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="portfolio" class="py-24 md:py-32 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        
+        <!-- Header & Category Filters -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <span class="text-xs uppercase tracking-[0.25em] text-bronze font-semibold">Selected Archive</span>
+            <h2 class="text-3xl sm:text-5xl font-display font-bold text-alabaster mt-2">
+              Architectural Commissions
+            </h2>
+          </div>
+
+          <!-- Filter buttons -->
+          <div class="flex flex-wrap gap-2 text-xs uppercase tracking-wider" id="filterContainer">
+            <button class="filter-btn active px-5 py-2 rounded-full border border-bronze bg-bronze text-obsidian font-semibold transition-all" data-category="all">
+              All Works
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-white/15 text-sandstone hover:border-bronze hover:text-alabaster transition-all" data-category="residential">
+              Residential
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-white/15 text-sandstone hover:border-bronze hover:text-alabaster transition-all" data-category="hospitality">
+              Hospitality
+            </button>
+            <button class="filter-btn px-5 py-2 rounded-full border border-white/15 text-sandstone hover:border-bronze hover:text-alabaster transition-all" data-category="cultural">
+              Cultural &amp; Art
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projectsGrid">
+
+          <!-- Project Item 1 -->
+          <article class="project-item group rounded-3xl overflow-hidden glass-card cursor-pointer" data-category="residential" onclick="openLightbox('The Obsidian Villa', 'St. Moritz, Switzerland', '2024', 'Residential', 'A sculptural private sanctuary clad in basalt stone, rough-hewn pine, and frameless glazing that frames the Engadin alpine crests.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80')">
+            <div class="image-zoom-container relative aspect-[4/3] overflow-hidden bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt="The Obsidian Villa" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171615/B59473?text=Obsidian+Villa'">
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-bronze border border-white/10 font-semibold">Residential</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-display font-bold text-alabaster group-hover:text-bronze transition-colors">The Obsidian Villa</h3>
+                <span class="text-xs text-sandstone/60">2024</span>
+              </div>
+              <p class="text-xs text-sandstone/80 mb-4">St. Moritz, Switzerland &bull; 620 sq m</p>
+              <div class="flex items-center text-xs font-semibold text-bronze tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                <span>View Project Case</span>
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Item 2 -->
+          <article class="project-item group rounded-3xl overflow-hidden glass-card cursor-pointer" data-category="hospitality" onclick="openLightbox('Alabaster Boutique Hotel', 'Puglia, Italy', '2023', 'Hospitality', 'Restoration of a 17th-century masseria with subterranean stone spa vaults, natural lime mortars, and custom hand-poured terracotta basins.', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80')">
+            <div class="image-zoom-container relative aspect-[4/3] overflow-hidden bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80" alt="Alabaster Boutique Hotel" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171615/B59473?text=Alabaster+Hotel'">
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-bronze border border-white/10 font-semibold">Hospitality</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-display font-bold text-alabaster group-hover:text-bronze transition-colors">Masseria Alabaster</h3>
+                <span class="text-xs text-sandstone/60">2023</span>
+              </div>
+              <p class="text-xs text-sandstone/80 mb-4">Valle d’Itria, Italy &bull; 14 Suites</p>
+              <div class="flex items-center text-xs font-semibold text-bronze tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                <span>View Project Case</span>
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Item 3 -->
+          <article class="project-item group rounded-3xl overflow-hidden glass-card cursor-pointer" data-category="cultural" onclick="openLightbox('Pavilion of Echoes', 'Kyoto, Japan', '2023', 'Cultural & Art', 'A collaborative cultural tea pavilion crafted with Japanese joinery, unsealed rammed earth walls, and acoustic water courtyards.', 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80')">
+            <div class="image-zoom-container relative aspect-[4/3] overflow-hidden bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" alt="Pavilion of Echoes" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171615/B59473?text=Kyoto+Pavilion'">
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-bronze border border-white/10 font-semibold">Cultural</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-display font-bold text-alabaster group-hover:text-bronze transition-colors">Pavilion of Echoes</h3>
+                <span class="text-xs text-sandstone/60">2023</span>
+              </div>
+              <p class="text-xs text-sandstone/80 mb-4">Kyoto, Japan &bull; Cultural Exhibition</p>
+              <div class="flex items-center text-xs font-semibold text-bronze tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                <span>View Project Case</span>
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Item 4 -->
+          <article class="project-item group rounded-3xl overflow-hidden glass-card cursor-pointer" data-category="residential" onclick="openLightbox('Tribeca Loft Residence', 'New York, USA', '2024', 'Residential', 'Conversion of an 1890 cast-iron warehouse into an airy brutalist loft using patinated bronze portals, monolithic concrete islands, and textured linen curtains.', 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80')">
+            <div class="image-zoom-container relative aspect-[4/3] overflow-hidden bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" alt="Tribeca Loft Residence" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171615/B59473?text=Tribeca+Loft'">
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-bronze border border-white/10 font-semibold">Residential</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-display font-bold text-alabaster group-hover:text-bronze transition-colors">Tribeca Loft</h3>
+                <span class="text-xs text-sandstone/60">2024</span>
+              </div>
+              <p class="text-xs text-sandstone/80 mb-4">Manhattan, USA &bull; 410 sq m</p>
+              <div class="flex items-center text-xs font-semibold text-bronze tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                <span>View Project Case</span>
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Item 5 -->
+          <article class="project-item group rounded-3xl overflow-hidden glass-card cursor-pointer" data-category="hospitality" onclick="openLightbox('Cenote Wellness Sanctuary', 'Tulum, Mexico', '2022', 'Hospitality', 'Low-impact timber stilt wellness lodges embedded within virgin coastal jungle, utilizing limestone gravel pathways and rain-harvested thermal pools.', 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1200&q=80')">
+            <div class="image-zoom-container relative aspect-[4/3] overflow-hidden bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=800&q=80" alt="Cenote Wellness Sanctuary" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171615/B59473?text=Tulum+Sanctuary'">
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-bronze border border-white/10 font-semibold">Hospitality</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-display font-bold text-alabaster group-hover:text-bronze transition-colors">Cenote Sanctuary</h3>
+                <span class="text-xs text-sandstone/60">2022</span>
+              </div>
+              <p class="text-xs text-sandstone/80 mb-4">Riviera Maya, Mexico &bull; Eco Resort</p>
+              <div class="flex items-center text-xs font-semibold text-bronze tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                <span>View Project Case</span>
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Item 6 -->
+          <article class="project-item group rounded-3xl overflow-hidden glass-card cursor-pointer" data-category="cultural" onclick="openLightbox('Sculpture Gallery Aurelia', 'Athens, Greece', '2023', 'Cultural & Art', 'An underground archaeological gallery illuminated solely by zenithal light wells carved into Attic limestone cliffs.', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80')">
+            <div class="image-zoom-container relative aspect-[4/3] overflow-hidden bg-charcoal">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Sculpture Gallery Aurelia" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x600/171615/B59473?text=Aurelia+Gallery'">
+              <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/80 backdrop-blur-md text-[10px] uppercase tracking-widest text-bronze border border-white/10 font-semibold">Cultural</span>
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-baseline mb-2">
+                <h3 class="text-xl font-display font-bold text-alabaster group-hover:text-bronze transition-colors">Gallery Aurelia</h3>
+                <span class="text-xs text-sandstone/60">2023</span>
+              </div>
+              <p class="text-xs text-sandstone/80 mb-4">Athens, Greece &bull; Museum Wing</p>
+              <div class="flex items-center text-xs font-semibold text-bronze tracking-wider uppercase group-hover:translate-x-1 transition-transform">
+                <span>View Project Case</span>
+                <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="philosophy" class="py-24 md:py-32 px-6 md:px-12 bg-charcoal/50 border-y border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mb-16">
+          <span class="text-xs uppercase tracking-[0.25em] text-bronze font-semibold">The Process</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-bold text-alabaster mt-2">
+            Rigorous Precision, Earthly Nuance
+          </h2>
+          <p class="text-sandstone/70 text-sm mt-3 leading-relaxed">
+            Every creation unfolds through four distinct phases, ensuring total synthesis between client rituals, context geography, and bespoke materiality.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <!-- Step 1 -->
+          <div class="p-8 rounded-2xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+            <span class="text-3xl font-display font-bold text-bronze/50">01</span>
+            <h3 class="text-lg font-display font-bold text-alabaster mt-4 mb-2">Site &amp; Light Analysis</h3>
+            <p class="text-xs text-sandstone/70 leading-relaxed">
+              We begin with exhaustive solar orientation studies, thermal airflow metrics, and historical geologic mapping of the property.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="p-8 rounded-2xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+            <span class="text-3xl font-display font-bold text-bronze/50">02</span>
+            <h3 class="text-lg font-display font-bold text-alabaster mt-4 mb-2">Monolithic Spatial Planning</h3>
+            <p class="text-xs text-sandstone/70 leading-relaxed">
+              Carving interior voids that celebrate unbroken visual sightlines, acoustic absorption, and effortless human circulation.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="p-8 rounded-2xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+            <span class="text-3xl font-display font-bold text-bronze/50">03</span>
+            <h3 class="text-lg font-display font-bold text-alabaster mt-4 mb-2">Material Archeology</h3>
+            <p class="text-xs text-sandstone/70 leading-relaxed">
+              Hand-selecting raw quarry slabs, custom patinated metal profiles, and authentic lime plasters with master European artisans.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="p-8 rounded-2xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+            <span class="text-3xl font-display font-bold text-bronze/50">04</span>
+            <h3 class="text-lg font-display font-bold text-alabaster mt-4 mb-2">Turnkey Realization</h3>
+            <p class="text-xs text-sandstone/70 leading-relaxed">
+              Meticulous site supervision, bespoke lighting calibration, custom built-in furniture curation, and final acoustic tuning.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-24 md:py-32 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <div class="lg:col-span-5 sticky top-28 space-y-6">
+            <span class="text-xs uppercase tracking-[0.25em] text-bronze font-semibold">Our Practice</span>
+            <h2 class="text-3xl sm:text-5xl font-display font-bold text-alabaster leading-tight">
+              Bespoke Services for Discerning Patrons
+            </h2>
+            <p class="text-sandstone/70 text-sm leading-relaxed">
+              From ground-up private estates to sensitive heritage restorations and collectible furniture objects, we offer turnkey architectural stewardship.
+            </p>
+            <a href="#contact" class="inline-flex items-center space-x-2 text-xs uppercase tracking-widest font-semibold text-bronze hover:underline">
+              <span>Request Service Specimen</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            </a>
+          </div>
+
+          <div class="lg:col-span-7 space-y-6">
+            <!-- Service 1 -->
+            <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+              <div class="flex items-baseline justify-between mb-3">
+                <h3 class="text-xl font-display font-bold text-alabaster">Architecture &amp; Private Residences</h3>
+                <span class="text-xs font-semibold text-bronze">Full Execution</span>
+              </div>
+              <p class="text-xs text-sandstone/80 leading-relaxed mb-4">
+                Holistic architectural design from conceptual master plans to municipal permitting, structural engineering coordination, and high-fidelity construction supervision.
+              </p>
+              <div class="flex flex-wrap gap-2 text-[11px] text-sandstone/60">
+                <span class="px-3 py-1 rounded-full bg-white/5">Ground-Up Estates</span>
+                <span class="px-3 py-1 rounded-full bg-white/5">Villa Renovation</span>
+                <span class="px-3 py-1 rounded-full bg-white/5">Passive House Standard</span>
+              </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+              <div class="flex items-baseline justify-between mb-3">
+                <h3 class="text-xl font-display font-bold text-alabaster">Interior Architecture &amp; Spatial Styling</h3>
+                <span class="text-xs font-semibold text-bronze">Turnkey</span>
+              </div>
+              <p class="text-xs text-sandstone/80 leading-relaxed mb-4">
+                Total interior recalibration: custom stone fireplaces, concealed joinery, acoustic plaster ceilings, tailored wellness bathrooms, and ambient architectural lighting.
+              </p>
+              <div class="flex flex-wrap gap-2 text-[11px] text-sandstone/60">
+                <span class="px-3 py-1 rounded-full bg-white/5">Custom Millwork</span>
+                <span class="px-3 py-1 rounded-full bg-white/5">Lighting Design</span>
+                <span class="px-3 py-1 rounded-full bg-white/5">Fine Art Curation</span>
+              </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="p-8 rounded-3xl glass-card border border-white/10 hover:border-bronze/40 transition-all">
+              <div class="flex items-baseline justify-between mb-3">
+                <h3 class="text-xl font-display font-bold text-alabaster">Bespoke Objects &amp; Furniture Edition</h3>
+                <span class="text-xs font-semibold text-bronze">Limited Series</span>
+              </div>
+              <p class="text-xs text-sandstone/80 leading-relaxed mb-4">
+                Limited edition collectible design: monolithic stone dining tables, cast bronze consoles, hand-knotted wool rugs, and architectural door hardware fabricated with artisanal studios.
+              </p>
+              <div class="flex flex-wrap gap-2 text-[11px] text-sandstone/60">
+                <span class="px-3 py-1 rounded-full bg-white/5">Collectible Design</span>
+                <span class="px-3 py-1 rounded-full bg-white/5">Artisanal Bronze</span>
+                <span class="px-3 py-1 rounded-full bg-white/5">Quarry Sourcing</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="accolades" class="py-24 md:py-32 px-6 md:px-12 bg-charcoal/30 border-y border-white/5">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs uppercase tracking-[0.25em] text-bronze font-semibold">Testimonials &amp; Press</span>
+          <h2 class="text-3xl sm:text-5xl font-display font-bold text-alabaster mt-2">
+            Praised by Patrons &amp; Critics
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Quote 1 -->
+          <div class="p-8 rounded-3xl glass-card flex flex-col justify-between">
+            <div>
+              <div class="flex space-x-1 text-bronze mb-4">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <p class="text-sm font-light text-sandstone leading-relaxed italic">
+                "Ariana Vega brought an almost monastic serenity to our St. Moritz home. Every angle frames the sunrise with poetic exactitude. Truly breathtaking work."
+              </p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-white/5">
+              <p class="text-xs font-display font-bold text-alabaster">Henrik &amp; Elena von B&uuml;low</p>
+              <p class="text-[10px] text-sandstone/60 uppercase tracking-wider">Private Patrons &bull; Switzerland</p>
+            </div>
+          </div>
+
+          <!-- Quote 2 -->
+          <div class="p-8 rounded-3xl glass-card flex flex-col justify-between">
+            <div>
+              <div class="flex space-x-1 text-bronze mb-4">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <p class="text-sm font-light text-sandstone leading-relaxed italic">
+                "One of the rare architectural minds who understands that luxury is not embellishment, but the purity of space, silence, and honest tactile stone."
+              </p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-white/5">
+              <p class="text-xs font-display font-bold text-alabaster">Architectural Digest Italia</p>
+              <p class="text-[10px] text-sandstone/60 uppercase tracking-wider">Annual Design Review &bull; 2024</p>
+            </div>
+          </div>
+
+          <!-- Quote 3 -->
+          <div class="p-8 rounded-3xl glass-card flex flex-col justify-between">
+            <div>
+              <div class="flex space-x-1 text-bronze mb-4">
+                <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+              </div>
+              <p class="text-sm font-light text-sandstone leading-relaxed italic">
+                "The transformation of our Tribeca space exceeded our highest expectations. Her studio handled everything from custom limestone islands to acoustic control seamlessly."
+              </p>
+            </div>
+            <div class="mt-6 pt-6 border-t border-white/5">
+              <p class="text-xs font-display font-bold text-alabaster">Marcus Sterling</p>
+              <p class="text-[10px] text-sandstone/60 uppercase tracking-wider">Art Collector &bull; New York</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-24 md:py-32 px-6 md:px-12 relative overflow-hidden">
+      <!-- Glow decoration -->
+      <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-bronze/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          <!-- Contact Information & Studio Details -->
+          <div class="lg:col-span-5 space-y-8">
+            <div>
+              <span class="text-xs uppercase tracking-[0.25em] text-bronze font-semibold">Initiate a Commission</span>
+              <h2 class="text-3xl sm:text-5xl font-display font-bold text-alabaster mt-2">
+                Let Us Shape Your Sanctuary.
+              </h2>
+              <p class="text-sandstone/70 text-sm mt-4 leading-relaxed">
+                We accept a strictly limited number of private residential and cultural commissions annually to ensure undivided partner-level attention.
+              </p>
+            </div>
+
+            <!-- Studio Locations -->
+            <div class="space-y-6 pt-4">
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 rounded-full border border-bronze/40 flex items-center justify-center text-bronze shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-widest font-bold text-alabaster">Milan Studio</h4>
+                  <p class="text-xs text-sandstone/70 mt-1">Via Monte Napoleone 18, 20121 Milano, Italy</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 rounded-full border border-bronze/40 flex items-center justify-center text-bronze shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                </div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-widest font-bold text-alabaster">New York Atelier</h4>
+                  <p class="text-xs text-sandstone/70 mt-1">54 Franklin Street, Tribeca, New York, NY 10013</p>
+                </div>
+              </div>
+
+              <div class="flex items-start space-x-4">
+                <div class="w-8 h-8 rounded-full border border-bronze/40 flex items-center justify-center text-bronze shrink-0">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                </div>
+                <div>
+                  <h4 class="text-xs uppercase tracking-widest font-bold text-alabaster">Direct Inquiries</h4>
+                  <p class="text-xs text-sandstone/70 mt-1">commissions@arianavega-studio.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Form Card -->
+          <div class="lg:col-span-7">
+            <form id="inquiryForm" class="p-8 sm:p-10 rounded-3xl glass-card space-y-6">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs uppercase tracking-widest text-sandstone mb-2 font-medium">Your Name *</label>
+                  <input type="text" id="userName" required placeholder="Lord/Lady, Mr/Ms..." class="w-full px-4 py-3.5 rounded-xl bg-obsidian/70 border border-white/10 text-alabaster placeholder-stone-600 focus:outline-none focus:border-bronze text-sm">
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-widest text-sandstone mb-2 font-medium">Email Address *</label>
+                  <input type="email" id="userEmail" required placeholder="name@domain.com" class="w-full px-4 py-3.5 rounded-xl bg-obsidian/70 border border-white/10 text-alabaster placeholder-stone-600 focus:outline-none focus:border-bronze text-sm">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label class="block text-xs uppercase tracking-widest text-sandstone mb-2 font-medium">Project Scope</label>
+                  <select id="projectScope" class="w-full px-4 py-3.5 rounded-xl bg-obsidian/70 border border-white/10 text-alabaster focus:outline-none focus:border-bronze text-sm">
+                    <option value="Residential Architecture">Ground-Up Private Villa</option>
+                    <option value="Interior Architecture">Luxury Interior Architecture</option>
+                    <option value="Boutique Hospitality">Hospitality / Resort Development</option>
+                    <option value="Bespoke Collectible Furniture">Custom Furniture Commission</option>
+                    <option value="Other">Cultural or Gallery Space</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-widest text-sandstone mb-2 font-medium">Project Location</label>
+                  <input type="text" id="projectLocation" placeholder="City, Country" class="w-full px-4 py-3.5 rounded-xl bg-obsidian/70 border border-white/10 text-alabaster placeholder-stone-600 focus:outline-none focus:border-bronze text-sm">
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-sandstone mb-2 font-medium">Anticipated Investment Budget</label>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                  <label class="cursor-pointer">
+                    <input type="radio" name="budget" value="€500k - €1M" class="peer sr-only">
+                    <div class="p-3 text-center rounded-xl border border-white/10 peer-checked:border-bronze peer-checked:bg-bronze/10 text-sandstone peer-checked:text-bronze transition-colors">
+                      €500k - €1M
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="budget" value="€1M - €3M" class="peer sr-only" checked>
+                    <div class="p-3 text-center rounded-xl border border-white/10 peer-checked:border-bronze peer-checked:bg-bronze/10 text-sandstone peer-checked:text-bronze transition-colors">
+                      €1M - €3M
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="budget" value="€3M - €7M" class="peer sr-only">
+                    <div class="p-3 text-center rounded-xl border border-white/10 peer-checked:border-bronze peer-checked:bg-bronze/10 text-sandstone peer-checked:text-bronze transition-colors">
+                      €3M - €7M
+                    </div>
+                  </label>
+                  <label class="cursor-pointer">
+                    <input type="radio" name="budget" value="€7M+" class="peer sr-only">
+                    <div class="p-3 text-center rounded-xl border border-white/10 peer-checked:border-bronze peer-checked:bg-bronze/10 text-sandstone peer-checked:text-bronze transition-colors">
+                      €7M+
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-sandstone mb-2 font-medium">Project Narrative &amp; Vision *</label>
+                <textarea id="projectNotes" rows="4" required placeholder="Describe your site, desired timeline, aesthetic aspirations, or spatial requirements..." class="w-full px-4 py-3.5 rounded-xl bg-obsidian/70 border border-white/10 text-alabaster placeholder-stone-600 focus:outline-none focus:border-bronze text-sm"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl bg-bronze text-obsidian font-semibold text-xs tracking-[0.2em] uppercase hover:bg-white transition-all duration-300 shadow-xl shadow-bronze/20 flex items-center justify-center space-x-2">
+                <span>Submit Confidential Inquiry</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 py-12 px-6 md:px-12 bg-obsidian text-sandstone/70 text-xs">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <span class="font-display font-bold text-alabaster tracking-widest text-sm">ARIANA VEGA</span>
+        <p class="text-[11px] text-sandstone/50 mt-1">&copy; 2026 Ariana Vega Studio. All international rights reserved.</p>
+      </div>
+
+      <div class="flex items-center space-x-8 text-[11px] uppercase tracking-widest">
+        <a href="#hero" class="hover:text-bronze transition-colors">Top</a>
+        <a href="#about" class="hover:text-bronze transition-colors">Studio</a>
+        <a href="#portfolio" class="hover:text-bronze transition-colors">Archive</a>
+        <a href="#contact" class="hover:text-bronze transition-colors">Inquire</a>
+        <a href="javascript:void(0)" onclick="copyStudioEmail()" class="hover:text-bronze transition-colors">Copy Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Lightbox Modal -->
+  <div id="projectModal" class="fixed inset-0 z-50 hidden bg-obsidian/90 backdrop-blur-xl flex items-center justify-center p-4 md:p-8" role="dialog" aria-modal="true">
+    <div class="relative max-w-4xl w-full bg-charcoal rounded-3xl border border-white/15 overflow-hidden shadow-2xl animate-fade-in max-h-[90vh] flex flex-col">
+      <!-- Modal Close Button -->
+      <button onclick="closeLightbox()" aria-label="Close modal" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-obsidian/80 text-alabaster hover:text-bronze border border-white/10 flex items-center justify-center">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+
+      <!-- Modal Image Container -->
+      <div class="aspect-video w-full overflow-hidden bg-obsidian relative">
+        <img id="modalImage" src="" alt="Project Preview" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Modal Content Body -->
+      <div class="p-6 md:p-8 overflow-y-auto space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-4">
+          <div>
+            <span id="modalCategory" class="text-[10px] uppercase tracking-widest text-bronze font-semibold"></span>
+            <h3 id="modalTitle" class="text-2xl font-display font-bold text-alabaster"></h3>
+          </div>
+          <div class="text-right">
+            <span id="modalLocation" class="text-xs text-sandstone/80 block"></span>
+            <span id="modalYear" class="text-[11px] text-bronze"></span>
+          </div>
+        </div>
+        <p id="modalDescription" class="text-xs sm:text-sm text-sandstone/80 leading-relaxed"></p>
+
+        <div class="pt-4 flex justify-end">
+          <a href="#contact" onclick="closeLightbox()" class="px-6 py-2.5 rounded-full bg-bronze text-obsidian text-xs font-semibold uppercase tracking-wider hover:bg-white transition-colors">
+            Inquire About Similar Architecture
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Message Element -->
+  <div id="toastMessage" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full bg-charcoal border border-bronze/50 rounded-2xl p-4 shadow-2xl flex items-start space-x-3 pointer-events-none">
+    <div id="toastIcon" class="w-8 h-8 rounded-full bg-bronze/20 text-bronze flex items-center justify-center shrink-0">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    </div>
+    <div class="flex-1">
+      <h5 id="toastTitle" class="text-xs font-display font-bold text-alabaster">Notice</h5>
+      <p id="toastBody" class="text-xs text-sandstone/80 mt-0.5 leading-tight"></p>
+    </div>
+  </div>
+
+  <script>
+    // Mobile navigation toggling
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileDrawer.classList.contains('hidden');
+        if (isHidden) {
+          mobileDrawer.classList.remove('hidden');
+          menuIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        } else {
+          mobileDrawer.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+    }
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileDrawer) {
+          mobileDrawer.classList.add('hidden');
+          menuIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+      });
+    });
+
+    // Animated Stats Counter
+    const statElements = document.querySelectorAll('[data-target]');
+    let statsAnimated = false;
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !statsAnimated) {
+          statsAnimated = true;
+          statElements.forEach(el => {
+            const target = +el.getAttribute('data-target');
+            let current = 0;
+            const increment = Math.max(1, Math.ceil(target / 45));
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                el.innerText = target + '+';
+                clearInterval(timer);
+              } else {
+                el.innerText = current;
+              }
+            }, 30);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const statsSection = document.querySelector('.stat-card');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
+    // Portfolio Category Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active button style
+        filterButtons.forEach(b => {
+          b.classList.remove('active', 'border-bronze', 'bg-bronze', 'text-obsidian');
+          b.classList.add('border-white/15', 'text-sandstone');
+        });
+        btn.classList.add('active', 'border-bronze', 'bg-bronze', 'text-obsidian');
+        btn.classList.remove('border-white/15', 'text-sandstone');
+
+        const category = btn.getAttribute('data-category');
+        projectItems.forEach(item => {
+          const itemCategory = item.getAttribute('data-category');
+          if (category === 'all' || itemCategory === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox modal functionality
+    const modal = document.getElementById('projectModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalLocation = document.getElementById('modalLocation');
+    const modalYear = document.getElementById('modalYear');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalDescription = document.getElementById('modalDescription');
+
+    function openLightbox(title, location, year, category, description, imageUrl) {
+      modalTitle.innerText = title;
+      modalLocation.innerText = location;
+      modalYear.innerText = year;
+      modalCategory.innerText = category;
+      modalDescription.innerText = description;
+      modalImage.src = imageUrl;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close lightbox on backdrop click
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          closeLightbox();
+        }
+      });
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeLightbox();
+      }
+    });
+
+    function showToast(title, message, isSuccess = true) {
+      const toast = document.getElementById('toastMessage');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastBody = document.getElementById('toastBody');
+      const toastIcon = document.getElementById('toastIcon');
+
+      toastTitle.innerText = title;
+      toastBody.innerText = message;
+
+      if (isSuccess) {
+        toastIcon.innerHTML = `<svg class="w-5 h-5 text-bronze" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+      } else {
+        toastIcon.innerHTML = `<svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>`;
+      }
+
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 4000);
+    }
+
+    // Form submission simulation
+    const inquiryForm = document.getElementById('inquiryForm');
+    if (inquiryForm) {
+      inquiryForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('userName').value;
+        const scope = document.getElementById('projectScope').value;
+
+        showToast(
+          'Inquiry Transmitted', 
+          `Thank you, ${name}. Ariana Vega Studio will review your ${scope} project briefing within 48 hours.`
+        );
+        inquiryForm.reset();
+      });
+    }
+
+    // Copy studio email to clipboard
+    function copyStudioEmail() {
+      const email = 'commissions@arianavega-studio.com';
+      const tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast('Address Copied', `${email} copied to clipboard.`);
+      } catch (err) {
+        showToast('Email Address', email);
+      }
+      document.body.removeChild(tempInput);
+    }
+  </script>
+</body>
+</html>
